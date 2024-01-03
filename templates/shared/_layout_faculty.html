@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="classwise">
+    <meta name="description" content="CREATE">
+    <title>DUKE CREATE TEMPLATE</title>
+
+    <!-- 3rd party -->
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-MML-AM_CHTML"></script>
+
+    <!-- Icons -->
+    <link href="/static/fontawesome-pro-6.4.0-web/css/fontawesome.css" rel="stylesheet">
+    <link href="/static/fontawesome-pro-6.4.0-web/css/brands.css" rel="stylesheet">
+    <link href="/static/fontawesome-pro-6.4.0-web/css/solid.css" rel="stylesheet">
+    <link href="/static/fontawesome-pro-6.4.0-web/css/regular.css" rel="stylesheet">
+
+    <!-- My CSS -->
+    <link rel="stylesheet" href="/static/css/scholarlystyles.css"/>
+    <link rel="stylesheet" href="/static/css/site.css"/>
+    <link rel="stylesheet" href="/static/css/bulma-list.css"/>
+    <link rel="stylesheet" href="/static/css/bulma-calendar.css">
+    <link rel="stylesheet" href="/static/css/bulma-collapsible.min.css">
+
+
+    <!-- My Scripts -->
+    <script type="text/javascript" src="../../static/js/resources.js"></script>
+    <script type="text/javascript" src="../../static/js/users.js"></script>
+
+    <!-- Extensions -->
+    <script type="text/javascript" src="../../static/js/bulma-tagsinput.min.js"></script>
+    <script type="text/javascript" src="../../static/js/bulma-quickview.js"></script>
+    <script type="text/javascript" src="../../static/js/bulma-calendar.min.js"></script>
+    <script type="text/javascript" src="../../static/js/bulma-collapsible.min.js"></script>
+
+
+</head>
+
+
+<body class="has-navbar-fixed-top">
+
+    <!-- Nav bar -->
+    <nav class="navbar is-fixed-top" id="login_navbar" role="navigation" aria-label="main navigation">
+        <!-- <div class="container is-fluid"> -->
+            <div class="navbar-brand ml-3 mr-4">
+                <a class="navbar-item" href="/home/dashboard">
+                    <!-- <img src='/static/scholarly7.png' height="100%" alt="Logo"> -->
+                    <img src='/static/classwise1.png' height="100%" alt="Logo">
+                </a>
+                <!-- <a id="header-logo" class="navbar-item"></a> -->
+                <a role="button" class="navbar-burger" data-target="navbarMenuA">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </span>
+            </div>
+            <div id="navbarMenuA" class="navbar-menu">
+                <div class="navbar-start">  
+                    <a href="/home/facultyDashboard" class="navbar-item">
+                        <span>Home</span>         
+                    </a>
+                     
+                </div> 
+
+                <div class='navbar-end mr-3'>
+                   
+
+                    <div class="navbar-item">
+                    </div>
+                    
+
+                    <a href="{{url_for('profile_get')}}" class="navbar-item">
+                        Account
+                    </a>
+                
+                    <div class='navbar-item'>
+                        <a href="/accounts/logout" class="button is-light">Logout</a>
+                    </div>
+                </div>
+            </div>
+        
+        <!-- </div> -->
+    </nav>
+
+    
+
+    <!-- Main body -->
+    <section class="is-centered">
+
+                
+                {% block main_content %}
+                {% endblock %}
+
+    </section>
+
+
+    <!-- footer -->
+    <!-- <footer class="footer tight is-fluid">
+            <div class="columns">
+                <div class="column is-4">
+                    
+                    <p>Copyright</p>
+                </div>
+                <div class="column is-4" style="text-align:center">
+                   
+                </div>
+                <div class="column is-4" style="text-align:right">
+
+                </div>
+            </div>
+    </footer> -->
+
+<script src='https://code.jquery.com/jquery-3.5.1.min.js'></script>
+
+
+</body>
+</html>

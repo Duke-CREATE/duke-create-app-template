@@ -1,0 +1,204 @@
+{% extends "shared/_layout_login.html" %}
+{% block title %}Home{% endblock %}
+{% block main_content %}
+
+<section id="home" class="hero mt-6 mb-6 pt-4 pb-4">
+    <div class="hero-body">
+        <!-- <div class="container"> -->
+            <div class="columns is-vcentered is-variable is-6">
+                <div class="column is-7">
+                   
+                   
+                    <h1 class="title is-title is-1 has-text-weight-bold pb-4" style="color:#012169">
+                        Welcome to the 
+                        <span class=is-hidden-touch>
+                            <br>
+                        </span>
+                        Duke CREATE Lab template!
+                    </h1>
+
+        
+                    <h2 class="subtitle is-5">
+                        This template can be used to create a new website for your project.  It is based on the Bulma CSS framework and uses the Flask Python framework.
+                    </h2>
+                    
+                    
+                    <div class="field">
+                        <div class="field-label">
+                        </div>
+                        <div class="field-body">
+                            <div class="field">
+                                <div class="control">
+                                    <a href="/accounts/register" class="button btn-go_inline is-medium">Get Started</a>
+                                    <a href="" class="button btn-go_inline_orange is-medium">Learn More</a>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="column has-text-centered">
+                    <figure class="image">
+                        
+                    </figure>
+                </div>
+            </div>
+           
+    </div>
+</section>
+
+<section class="hero">
+    <div class="hero-body has-background">
+        <div class="block has-text-centered">
+            <h2 class="title is-2" style="color:white">Title</h2>
+            <h5 class="title is-5" style="color:white">
+               Add subtitle
+            </h5>
+            <br>
+            <div class="level">
+                <div class="level-item has-text-centered">
+                    <div>
+                        <p>
+                            <figure class="image is-64x64 is-inline-block">
+                                <i class="fa-regular fa-chalkboard-user fa-3x" style="color:white"></i>
+                            </figure>
+                        </p>
+
+                        <div class='block'>
+                            <p style="color:white">Text</p>
+                        </div>
+                            
+                    </div>
+                </div>
+                <div class="level-item has-text-centered">
+                    <div>
+                        <p>
+                            <figure class="image is-64x64 is-inline-block">
+                                <i><img src="'../../static/icons/owl2_white.png""></i>
+                            </figure>
+                        </p>
+
+                        <p style="color:white">Text</p>
+                    </div>
+                </div>
+                <div class="level-item has-text-centered">
+                    <div>
+                        <p>
+                            <figure class="image is-64x64 is-inline-block">
+                                <i class="fa-solid fa-chart-line fa-3x" style="color:white"></i>
+                            </figure>
+                            
+                        </p>
+
+                        <p style="color:white">Text</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="hero is-medium" id="features">
+    <div class="hero-body">
+        <div class="columns is-vcentered is-variable is-5">
+            <div class="column">
+                <h1 class="title is-title is-3 has-text-weight-bold pb-2" style="color:#012169">Title</h1>
+                <p class="subtitle is-5">
+                    Text
+                </p>
+            </div>
+            <div class="column is-6 has-text-centered">
+                <figure class="image">
+                    <img src="/static/screenshot4.png">
+                </figure>
+            </div>
+            
+        </div>
+        <br>
+        <hr style="background-color:#012169; border-color:#012169">
+        <br>
+        <div class="columns is-vcentered is-variable is-5">
+            
+            <div class="column is-6 has-text-centered">
+                <figure class="image">
+                    <img src="/static/screenshot_chatSession.png">
+                </figure>
+            </div>
+            <div class="column">
+                <h1 class="title is-title is-3 has-text-weight-bold pb-2 has-text-right" style="color:#012169">Title</h1>
+                <p class="subtitle is-5 has-text-right">
+                    Text
+                </p>
+            </div>
+            
+        </div>
+        
+        <br>
+        <hr style="background-color:#012169; border-color:#012169">
+        <br>
+        <div class="columns is-vcentered is-variable is-5">
+            <div class="column">
+                <h1 class="title is-title is-3 has-text-weight-bold pb-2" style="color:#012169">Title</h1>
+                <p class="subtitle is-5">
+                    Text
+                </p>
+            </div>
+            <div class="column is-6 has-text-centered">
+                <figure class="image">
+                    <img src="/static/screenshot3.png">
+                </figure>
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+<script type="text/javascript">
+
+
+function rotateText() {
+    console.log('running')
+    // fade text in element 'headline' out and fade new text in
+    if (document.getElementById('headline').innerHTML == 'engages') {
+        // remove headline
+        document.getElementById('parent').removeChild(document.getElementById('headline'))
+        // add new headline
+        let newHeadline = document.createElement('span')
+        newHeadline.id = 'headline'
+        newHeadline.classList.add('fade-in')
+        newHeadline.innerHTML = 'empowers'
+        newHeadline.style.color = '#E89923'
+        document.getElementById('parent').appendChild(newHeadline)
+
+
+    }
+    else if (document.getElementById('headline').innerHTML == 'supports') {
+        // remove headline
+        document.getElementById('parent').removeChild(document.getElementById('headline'))
+        // add new headline
+        let newHeadline = document.createElement('span')
+        newHeadline.id = 'headline'
+        newHeadline.classList.add('fade-in')
+        newHeadline.innerHTML = 'engages'
+        newHeadline.style.color = '#E89923'
+        document.getElementById('parent').appendChild(newHeadline)
+    }
+
+    else {
+        // remove headline
+        document.getElementById('parent').removeChild(document.getElementById('headline'))
+        // add new headline
+        let newHeadline = document.createElement('span')
+        newHeadline.id = 'headline'
+        newHeadline.classList.add('fade-in')
+        newHeadline.innerHTML = 'supports'
+        newHeadline.style.color = '#E89923'
+        document.getElementById('parent').appendChild(newHeadline)
+    }
+}
+
+</script>
+
+{% endblock %}

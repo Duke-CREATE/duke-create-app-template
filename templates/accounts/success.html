@@ -1,0 +1,41 @@
+{% extends "shared/_layout_faculty.html" %}
+{% block main_content %}
+
+<section class="columns is-fullheight m-3">
+
+    <div class="container">
+        <div class="column is-10 is-offset-1">
+            <div class="box">
+                <p class="title is-5">
+                        You have successfully upgraded your subscription and your course is now available for students.
+                </p>
+                <p>
+                    Click below to return to your dashboard.
+                </p>
+                <br>
+                <div class="field">
+                    <div class="control">
+                        <a href = "{{ url_for('facultyDashboard') }}">
+                            <button class="button is-primary" type='button'>Return to Dashboard</button>
+                        </a>
+                    </div>
+            </div>
+            
+                
+                
+            
+        </div>
+    </div>
+
+</section>
+
+<script type="text/javascript">
+
+
+    
+</script>
+
+{% endblock %}
+
+
+

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Classwise">
+    <meta name="description" content="CREATE">
+    <title>DUKE CREATE TEMPLATE</title>
+
+    <!-- 3rd party -->
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+
+    <!-- My CSS -->
+    <link rel="stylesheet" href="/static/css/scholarlystyles.css"/>
+    <link rel="stylesheet" href="/static/css/site.css"/>
+    <link rel="stylesheet" href="/static/css/bulma-list.css"/>
+    <link rel="stylesheet" href="/static/css/bulma-divider.css"/>
+    <link rel="stylesheet" href="/static/css/bulma-pricingtable.min.css"/>
+
+    <!-- My Scripts -->
+
+
+    <!-- Extensions -->
+    <script type="text/javascript" src="../../static/js/bulma-tagsinput.min.js"></script>
+
+    <!-- Icons -->
+    <link href="/static/fontawesome-pro-6.4.0-web/css/fontawesome.css" rel="stylesheet">
+    <link href="/static/fontawesome-pro-6.4.0-web/css/brands.css" rel="stylesheet">
+    <link href="/static/fontawesome-pro-6.4.0-web/css/solid.css" rel="stylesheet">
+    <link href="/static/fontawesome-pro-6.4.0-web/css/regular.css" rel="stylesheet">
+
+</head>
+
+
+
+<body class="has-navbar-fixed-top" style="background-color: #ffffff;">
+
+    <!-- Nav bar -->
+    <nav class="navbar is-fixed-top is-primary" id="login_navbar" role="navigation" aria-label="main navigation">
+        <!-- <div class="container is-fluid"> -->
+            <div class="navbar-brand">
+                <a class="navbar-item " href="/">
+                    <!-- <img src='/static/scholarly7.png' height="100%" alt="Logo"> -->
+                    <img src='/static/classwise1.png' height="100%" alt="Logo">
+                </a>
+                <!-- <a id="header-logo" class="navbar-item"></a> -->
+                <a role="button" class="navbar-burger" data-target="navbarMenuA">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </span>
+            </div>
+            <div id="navbarMenuA" class="navbar-menu ml-6">
+                <div class="navbar-start">   
+                    
+                    
+                    <a href="/about" class="navbar-item">
+                        About
+                    </a>
+                </div> 
+                <div class='navbar-end'>
+                        <div class='navbar-item'>
+                            <a href="/accounts/register" class="navbar-item has-text-weight-medium">
+                                Sign Up
+                            </a>
+                        </div>
+                        <!-- <div class='navbar-item'>
+                            <a href="/accounts/logout" class="navbar-item has-text-weight-medium">
+                                Logout
+                            </a>
+                        </div> -->
+                        <div class='navbar-item'>
+                            <a href="/accounts/login" class="button is-light">Login</a>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        
+        <!-- </div> -->
+    </nav>
+
+    
+
+    <!-- Main body -->
+    {% block main_content %}
+    {% endblock %}
+
+    <!-- footer -->
+    <footer class="footer is-fluid">
+        <div class="container is-fluid">
+            <div class="columns">
+                <div class="column is-4">
+                    <a href="/about" style="color:#ffffff"><b>About</b></a>
+                    <p>Copyright</p>
+                    <br>
+                    <a href="/legal/privacypolicy" style="color:#ffffff">Privacy Policy</a>
+                </div>
+                <div class="column is-4" style="text-align:center">
+
+                </div>
+                
+            </div>
+        </div>
+    </footer>
+
+<script src='https://code.jquery.com/jquery-3.5.1.min.js'></script>
+
+</body>
+</html>

@@ -1,0 +1,48 @@
+{% extends "shared/_layout_login.html" %}
+{% block title %}Login{% endblock %}
+{% block main_content %}
+
+<section class="columns is-fullheight m-3">
+    <div class="container">
+
+        <div class="column is-4 is-offset-4">
+            <h3 class="title">Reset Password</h3>
+            <div class="box">
+                {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <div class="notification is-danger">
+                        {{ messages[0] }}
+                    </div>
+                {% endif %}
+                {% endwith %}
+
+                <form method="POST" enctype=multipart/form-data action="{{ url_for('reset_page') }}">
+                    <div class="field" style="display:none">
+                        <div class="control">
+                            <input class="input" name="token" value = "{{ token }}">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="control has-icons-left">
+                            <input class="input is-large" type="password" name="newpassword" placeholder="Enter new password" required="required">
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-lock"></i>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="control has-icons-left">
+                            <input class="input is-large" type="password" name="confirmpassword" placeholder="Confirm new password" required="required">
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-lock"></i>
+                        </div>
+                    </div>
+                
+                    <button class="button btn-go is-block is-large is-fullwidth" type='submit' name="submitPassword" value="Submit">Reset</button>
+                </form>
+            </div>
+        </div>
+
+
+    </div>
+</section>
+{% endblock %}

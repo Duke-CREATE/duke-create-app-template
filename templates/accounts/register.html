@@ -1,0 +1,270 @@
+{% extends "shared/_layout_login.html" %}
+{% block title %}Register{% endblock %}
+{% block main_content %}
+
+<section class="columns is-fullheight m-3">
+
+    <div class="container">
+      <form method="POST">
+        <div class="column is-8 is-offset-2">
+          <h3 class="title">Welcome to Classwise!</h3>
+          <div class="box">
+            <form method="POST">
+
+              {% with messages = get_flashed_messages() %}
+              {% if messages %}
+                  <div class="notification is-danger">
+                      {{ messages[0] }}. Go to <a href="{{ url_for('login_get') }}">login page</a>.
+                  </div>
+              {% endif %}
+              {% endwith %}
+
+              <div class="block">
+                <div class="block" id="buttons">
+                  <p class="title is-5">Sign in with:</p>
+                  <div class="columns" >
+                    <div class="column is-half">
+                      <button class="button is-outlined is-fullwidth" type="submit" value="submit" name="googleSignin">
+                        <span class="icon"><img src="../static/sign-in/google/g-logo.png"> </span>
+                        <span>Google</span>
+                      </button>
+                    </div>
+                    <div class="column is-half">
+                      <button class="button is-outlined is-fullwidth" type='button' onclick="schoolSSO()">
+                        <span class="icon"><i class="fa-solid fa-university" aria-hidden="true"></i></span>
+                        <span>School SSO</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                
+                
+
+                <!-- Register for an account -->
+                <div class="block" id="register_account">
+                  <div class="divider is-horizontal">OR</div>
+                  <p class="title is-5">Create an Account</p>
+                  
+                    <div class="field is-horizontal">
+                      <div class="field-label is-normal">
+                        <label class="label">First name</label>
+                      </div>
+                      <div class="field-body">
+                        <div class="field">
+                          <div class="control">
+                              <input class="input" type="text" name="firstname" placeholder="First name" value="{{ firstname }}">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="field is-horizontal">
+                        <div class="field-label is-normal">
+                          <label class="label">Last name</label>
+                        </div>
+                        <div class="field-body">
+                          <div class="field">
+                            <div class="control">
+                                <input class="input" type="text" name="lastname" placeholder="Last name" value="{{ lastname }}">
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+  
+                    <div class="field is-horizontal">
+                        <div class="field-label is-normal">
+                          <label class="label">Email</label>
+                        </div>
+                        <div class="field-body">
+                          <div class="field">
+                            <div class="control has-icons-left">
+                                <input class="input" type="email" name="email" placeholder="School or university email" value="{{ email }}">
+                                <span class="icon is-small is-left">
+                                    <i class="fas fa-envelope"></i>
+                                </span>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="field is-horizontal">
+                        <div class="field-label is-normal">
+                          <label class="label">Password</label>
+                        </div>
+                        <div class="field-body">
+                          <div class="field">
+                            <div class="control has-icons-left">
+                                <input class="input" type="password" name="password" placeholder="Create a password" value="{{ password }}">
+                                <span class="icon is-small is-left">
+                                    <i class="fas fa-lock"></i>
+                                </span>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="field is-horizontal">
+                      <div class="field-label">
+                        <label class="label">Status</label>
+                      </div>
+                      <div class="field-body">
+                          <div class="field is-flex">
+                              <div class="control">
+                                  <label class="radio">
+                                      <input type="radio" name="status" checked value="student" onclick=showBetaCode(this)>
+                                      Student
+                                  </label>
+                                  <label class="radio">
+                                      <input type="radio" name="status" value="faculty" onclick=showBetaCode(this)>
+                                      Educator
+                                  </label>
+                              </div>
+                          </div>
+                      </div>
+                    </div>
+  
+                    <div class="field is-horizontal" id="betaCode" style="display:none">
+                      <div class="field-label is-normal">
+                        <label class="label">Beta code</label>
+                      </div>
+                      <div class="field-body">
+                        <div class="field">
+                          <div class="control has-icons-left">
+                              <input class="input" type="text" name="betaCode" placeholder="Enter beta code">
+                              <span class="icon is-small is-left">
+                                  <i class="fas fa-lock"></i>
+                              </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+  
+                    
+
+                    <div class="field is-horizontal" id="schoolPlanSelect" style="display:none">
+                      <div class="field-label">
+                        <label class="label">Select Plan</label>
+                      </div>
+                      <div class="field-body">
+                          <div class="field">
+                              <div class="control">
+                                <span>
+                                  <label class="radio">
+                                    <input type="radio" name="plan" value="free" checked>
+                                      Free Trial
+                                  </label>
+                                </span>
+                                  
+                                <span class="ml-2" id="k12Plan"  style="display:inline">
+                                  <label class="radio" >
+                                    <input type="radio" name="plan" value="k12">
+                                      K-12 Plan
+                                  </label>
+                                </span>
+
+                                <span class="ml-2" id="higherEdPlan" style="display:inline">
+                                  <label class="radio" >
+                                    <input type="radio" name="plan" value="higherEd">
+                                      Higher Ed Plan
+                                  </label>
+                                </span>
+                                 
+                              </div>
+                          </div>
+                      </div>
+                    </div>
+  
+  
+                    <div class="m-3 is-size-7 has-text-centered">
+                      By clicking below, you agree to the <a href=/legal/useragreement>Terms of Service</a> and <a href=/legal/privacypolicy>Privacy Policy</a>.
+                    </div>
+                    <button class="button btn-go is-block is-normal is-fullwidth">Agree & Join</button>
+                  </form>
+                
+                  
+                </div>
+
+                <!-- School SSO signin -->
+                <div class="block" id="register_sso" style="display:none">
+                  <p class="title is-5">Login with Single Sign On (SSO)</p>
+                  <form method="POST">
+                    <div class="field is-horizontal">
+                      <div class="field-label">
+                        <label class="label">Status</label>
+                      </div>
+                      <div class="field-body">
+                          <div class="field is-flex">
+                              <div class="control">
+                                  <label class="radio">
+                                      <input type="radio" name="status_sso" checked value="student">
+                                      Student
+                                  </label>
+                                  <label class="radio">
+                                      <input type="radio" name="status_sso" value="faculty">
+                                      Faculty
+                                  </label>
+                              </div>
+                          </div>
+                      </div>
+                    </div>
+  
+                    <div class="field is-horizontal">
+                      <div class="field-label is-normal">
+                          <label class="label">University</label>
+                      </div>
+                      <div class="field-body" >
+                          <div class="field">
+                              <div class="select is-fullwidth">
+                                  <select name="university_sso">
+                                    <option value="Duke University">Duke University</option>
+                                  </select>
+                              </div>
+                          </div>
+                      </div>
+                    </div>
+                    <button class="button btn-go is-block is-fullwidth" type="submit" value="submit" name="ssoButton">Login with SSO</button>
+                  
+                </div>
+
+
+              
+
+              
+            </form>
+          </div>
+        </div>
+      
+    </div>
+</section>
+
+<script type="text/javascript">
+
+document.addEventListener('DOMContentLoaded', function() {
+  
+})
+
+function showBetaCode(x) {
+  let status = x.value
+  // if faculty, show beta code entry input
+  if (status == 'faculty') {
+    document.getElementById("betaCode").style.display = "flex"
+
+  }
+  // if student, hide beta code entry input
+  else {
+    document.getElementById("betaCode").style.display = "none"
+    document.getElementById('schoolPlanSelect').style.display = 'none'
+  }
+}
+
+function schoolSSO() {
+  document.getElementById('register_sso').style.display = 'block'
+  document.getElementById('register_account').style.display = 'none'
+  document.getElementById('buttons').style.display = 'none'
+}
+  
+    
+    
+</script>
+
+{% endblock %}
+
+
+

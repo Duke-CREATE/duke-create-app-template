@@ -1,0 +1,55 @@
+{% extends "shared/_layout_faculty.html" %}
+{% block main_content %}
+
+    <div class="block p-3 m-3">
+
+       <div class="columns">
+            <div class="column">
+                <h3 class="title is-3">Dashboard</h3>
+            </div>
+            <div class="column">
+                <button class="button is-primary is-pulled-right" onclick="addCourse">Add Course</button>
+            </div>
+       </div>
+
+    </div>
+
+        
+
+<script type="text/javascript">
+
+
+document.addEventListener('DOMContentLoaded', function() {
+
+    
+
+    // Display file name when select file
+    let fileInputs = document.querySelectorAll('.file.has-name')
+    for (let fileInput of fileInputs) {
+        let input = fileInput.querySelector('.file-input')
+        let name = fileInput.querySelector('.file-name')
+        input.addEventListener('change', () => {
+            let files = input.files
+            if (files.length === 0) {
+            name.innerText = 'No file selected'
+            } else {
+            name.innerText = files[0].name
+            }
+        })
+    }
+
+    // Remove file name when form reset
+    let forms = document.getElementsByTagName('form')
+    for (let form of forms) {
+        form.addEventListener('reset', () => {
+            let names = form.querySelectorAll('.file-name')
+            for (let name of names) {
+            name.innerText = 'No file selected'
+            }
+    })
+    }
+
+
+</script>
+
+{% endblock %}

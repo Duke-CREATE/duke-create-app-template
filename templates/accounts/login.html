@@ -1,0 +1,129 @@
+{% extends "shared/_layout_login.html" %}
+{% block title %}Login{% endblock %}
+{% block main_content %}
+
+<section class="columns is-fullheight m-3">
+    <div class="container">
+        <div class="column is-8 is-offset-2">
+            <h3 class="title">Sign In</h3>
+            <div class="box">
+
+                {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <div class="notification is-danger">
+                        {{ messages[0] }}
+                    </div>
+                {% endif %}
+                {% endwith %}
+
+                <form method="POST">
+                    <div class="block" id="buttons">
+                        <p class="title is-5">Sign in with:</p>
+                        <div class="columns" >
+                        <div class="column is-half">
+                            <button class="button is-outlined is-fullwidth" type="submit" value="submit" name="googleSignin">
+                                <span class="icon"><img src="../static/sign-in/google/g-logo.png"> </span>
+                                <span>Google</span>
+                            </button>
+                        </div>
+                        <div class="column is-half">
+                            <button class="button is-outlined is-fullwidth" type="button" onclick="schoolSSO()">
+                            <span class="icon"><i class="fa-solid fa-university" aria-hidden="true"></i></span>
+                            <span>School SSO</span>
+                            </button>
+                        </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="block" id="loginClasswise">
+                        <div class="block">
+                            <div class="divider is-horizontal">OR</div>
+                            <p class="title is-5">Login</p>
+                            <div class="field">
+                                <div class="control has-icons-left">
+                                    <input class="input" type="email" name="email" placeholder="Your Email" value="{{ email }}">
+                                    <span class="icon is-small is-left">
+                                        <i class="fas fa-envelope"></i>
+                                    </span>
+                                </div>
+                            </div>
+        
+                            <div class="field">
+                                <div class="control has-icons-left">
+                                    <input class="input" type="password" name="password" placeholder="Your Password" value="{{ password }}">
+                                    <span class="icon is-small is-left">
+                                        <i class="fas fa-lock"></i>
+                                </div>
+                            </div>
+                        
+                            <button class="button btn-go is-block is-fullwidth" type="submit" value="submit" name="loginButton">Login</button>
+                        </div>
+                        <a href="{{ url_for('forgot_password') }}">
+                            <p class="is-size-7">Forgot password?</p>
+                        </a>
+                    </div>
+
+                    <div class="block" id="loginSSO" style="display:none">
+                        <p class="title is-5">Login with Single Sign On (SSO)</p>
+
+                        <div class="field is-horizontal">
+                            <div class="field-label">
+                                <label class="label">Status</label>
+                            </div>
+                            <div class="field-body">
+                                <div class="field is-flex">
+                                    <div class="control">
+                                        <label class="radio">
+                                            <input type="radio" name="status_sso" checked value="student">
+                                            Student
+                                        </label>
+                                        <label class="radio">
+                                            <input type="radio" name="status_sso" value="faculty">
+                                            Faculty
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+
+                        <div class="field is-horizontal">
+                            <div class="field-label is-normal">
+                                <label class="label">University</label>
+                            </div>
+                            <div class="field-body" >
+                                <div class="field">
+                                    <div class="select is-fullwidth">
+                                        <select name="university_sso">
+                                            <option value="Duke University">Duke University</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <button class="button btn-go is-block is-fullwidth" type="submit" value="submit" name="ssoButton">Login with SSO</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
+
+       
+
+    </div>
+</section>
+
+<script type="text/javascript">
+
+function schoolSSO() {
+    document.getElementById("loginClasswise").style.display = "none";
+    document.getElementById("loginSSO").style.display = "block";
+    document.getElementById('buttons').style.display = "none";
+}
+
+
+</script>
+{% endblock %}

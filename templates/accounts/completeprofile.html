@@ -1,0 +1,123 @@
+{% extends "shared/_layout_login.html" %}
+{% block title %}Register{% endblock %}
+{% block main_content %}
+
+<section class="columns is-fullheight m-3">
+
+    <div class="container">
+      <form method="POST">
+        <div class="column is-8 is-offset-2">
+          
+          <div class="box">
+            <form method="POST">
+
+              {% with messages = get_flashed_messages() %}
+              {% if messages %}
+                  <div class="notification is-danger">
+                      {{ messages[0] }}. Go to <a href="{{ url_for('login_get') }}">login page</a>.
+                  </div>
+              {% endif %}
+              {% endwith %}
+
+              <div class="block">
+                
+                <!-- Register for an account -->
+                <div class="block" id="register_account">
+                  <h4 class="title is-4">Complete Your Registration</h4>
+                    
+                    <div class="field is-horizontal">
+                      <div class="field-label">
+                        <label class="label">Status</label>
+                      </div>
+                      <div class="field-body">
+                          <div class="field is-flex">
+                              <div class="control">
+                                  <label class="radio">
+                                      <input type="radio" name="status" checked value="student" onclick=showBetaCode(this)>
+                                      Student
+                                  </label>
+                                  <label class="radio">
+                                      <input type="radio" name="status" value="faculty" onclick=showBetaCode(this)>
+                                      Educator
+                                  </label>
+                              </div>
+                          </div>
+                      </div>
+                    </div>
+  
+  
+                    <div class="field is-horizontal" id="universityPlanSelect" style="display:none">
+                      <div class="field-label">
+                        <label class="label">Select Plan</label>
+                      </div>
+                      <div class="field-body">
+                          <div class="field">
+                              <div class="control">
+                                  <label class="radio">
+                                    <input type="radio" name="plan" value="free">
+                                      Free Plan
+                                  </label>
+                                  <label class="radio">
+                                    <input type="radio" name="plan" value="higherEd">
+                                      Higher Ed Plan
+                                  </label>
+                              </div>
+                          </div>
+                      </div>
+                    </div>
+  
+                    
+                    
+  
+  
+                    <div class="m-3 is-size-7 has-text-centered">
+                      By clicking below, you agree to the <a href=/legal/useragreement>User Agreement</a> and <a href=/legal/privacypolicy>Privacy Policy</a>.
+                    </div>
+                    <button class="button btn-go is-block is-normal is-fullwidth">Complete Registration</button>
+                  </form>
+                
+                  
+                </div>
+
+                
+
+
+              
+
+              
+            </form>
+          </div>
+        </div>
+      
+    </div>
+</section>
+
+<script type="text/javascript">
+
+document.addEventListener('DOMContentLoaded', function() {
+  
+})
+
+function showBetaCode(x) {
+  let status = x.value
+  // if faculty, show beta code entry input
+  if (status == 'faculty') {
+    document.getElementById("betaCode").style.display = "flex"
+
+    
+  }
+  // if student, hide beta code entry input
+  else {
+    document.getElementById("betaCode").style.display = "none"
+    document.getElementById('schoolPlanSelect').style.display = 'none'
+  }
+}
+
+
+
+</script>
+
+{% endblock %}
+
+
+
