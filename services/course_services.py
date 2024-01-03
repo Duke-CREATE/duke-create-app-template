@@ -18,8 +18,8 @@ cloud = os.getenv('CLOUD',False)
 file_bucket = os.getenv('FILE_BUCKET','')
 
 class Course:
-    def __init__(self):
-        self.id = None
+    def __init__(self,id):
+        self.id = id
         self.number = None
         self.name = None
 
@@ -31,7 +31,7 @@ class Course:
        
         # query to create a course and return properties of the course
         query = """CREATE (x:classroom {id:$params['id'],number:$params['number'],name:$params['name']}) RETURN properties(x) as properties"""
-        course = graph.createQuery(query,params=self)[0]
+        course = graph.createQuery(query,params=self.__dict__)[0]
 
         # Add link between user and course
         query = f"MATCH (x:user),(y:classroom) WHERE x.email='{usr}' AND y.id='{self.id}' CREATE (x)-[r:OWNS_CLASSROOM {{primaryOwner:'yes',createTime:'{str(datetime.utcnow().strftime('%m/%d/%Y'))}'}}]->(y) RETURN properties(r) as properties"
